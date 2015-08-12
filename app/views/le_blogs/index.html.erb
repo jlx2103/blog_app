@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="banner">BLOGS</h1>
+
+<div class="row">
+ <% @le_blogs.each do |le_blog| %>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      
+      <div class="panel-heading">
+       <%= link_to le_blog.title, le_blog %>
+      </div>
+        
+        <div class="panel-body">
+          <p>by <%= le_blog.author %> </p>
+          <p> <%= le_blog.blog_entry[0..200]%>...<%= link_to "Read More", le_blog %></p>
+        </div>
+
+      <div class="panel-footer">
+        <% link_to 'Show', le_blog, class: "btn btn-primary" %>
+        <%= link_to 'Edit', edit_le_blog_path(le_blog), class: "btn btn-warning"%>
+        <%= link_to 'Destroy', le_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+
+    </div>
+  </div>
+ <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Le blog', new_le_blog_path %>
