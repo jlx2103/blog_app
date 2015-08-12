@@ -7,13 +7,15 @@
 	
 	<div class="panel-body">
 
-		  <p><%= @le_blog.author %></p>
+		  <p><%= @le_blog.user.username %></p>
 		  <p><em>Posted at <%= @le_blog.created_at.strftime("%m/%d/%Y, %I:%M%p")%></p>
 		  <%= @le_blog.blog_entry %>
 	</div>
 
 	 <div class="panel-footer">
-	<%= link_to 'Edit', edit_le_blog_path(@le_blog), class: "btn btn-primary" %> |
+	 	<% if @le_blog.user.id == current_user.id %>
+	<%= link_to 'Edit', edit_le_blog_path(@le_blog), class: "btn btn-primary" %>
+	<% end %>
 	<%= link_to 'Back', le_blogs_path, class: "btn btn-warning" %>
 
 	 </div>

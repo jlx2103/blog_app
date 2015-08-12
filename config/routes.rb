@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :le_blogs
 
   root "le_blogs#index"
+
+  get "your_posts" => "le_blogs#your_posts"
+  get "user_profile" => "le_blogs#user_profile"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -7,6 +7,12 @@ class LeBlogsController < ApplicationController
     @le_blogs = LeBlog.all
   end
 
+  def your_posts
+  end
+
+  def user_profile
+    @user = User.find(params[:id])
+  end
   # GET /le_blogs/1
   # GET /le_blogs/1.json
   def show
@@ -70,6 +76,6 @@ class LeBlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def le_blog_params
-      params.require(:le_blog).permit(:title, :author, :blog_entry)
+      params.require(:le_blog).permit(:title, :author, :blog_entry, :user_id)
     end
 end

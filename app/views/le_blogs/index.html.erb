@@ -12,16 +12,18 @@
       </div>
         
         <div class="panel-body">
-          <p>by <%= le_blog.author %> </p>
+          <p> <%= link_to le_blog.user.username, user_profile_path(id: le_blog.user.id) %> </p>
           <p> <%= le_blog.blog_entry[0..200]%>...<%= link_to "Read More", le_blog %></p>
         </div>
 
       <div class="panel-footer">
-        <% link_to 'Show', le_blog, class: "btn btn-primary" %>
-        <%= link_to 'Edit', edit_le_blog_path(le_blog), class: "btn btn-warning"%>
-        <%= link_to 'Destroy', le_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-      </div>
-
+        <% if le_blog.user.id == current_user.id %>
+          <%= link_to 'Edit', edit_le_blog_path(le_blog), class: "btn btn-warning"%>
+          <%= link_to 'Destroy', le_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <% end %>
+          <p>Comments: <%= le_blog.comments.length %></p>
+        
+        </div>
     </div>
   </div>
  <% end %>
@@ -29,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Le blog', new_le_blog_path %>
+
